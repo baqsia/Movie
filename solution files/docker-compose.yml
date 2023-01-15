@@ -9,11 +9,12 @@ services:
   movie.webapi:
     image: movie.api
     build:
-      context: .
-      dockerfile: ../src/Movie.Api/Dockerfile
-      
+      context: ..
+      dockerfile: src/Movie.Api/Dockerfile
+    depends_on: [ mssql ]
+    
   movie.web:
     image: movie.web
     build:
-      context: .
-      dockerfile: ../src/Movie.Api/ClientApp/Dockerfile
+      context: ..
+      dockerfile: src/Movie.Api/ClientApp/Dockerfile

@@ -1,6 +1,6 @@
 ﻿# ==== CONFIGURE =====
 # Use a Node 16 base image
-FROM node:14.17.0 
+FROM node:12
 WORKDIR . 
 COPY . .
 

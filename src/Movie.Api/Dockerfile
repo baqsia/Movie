@@ -6,11 +6,12 @@ EXPOSE 443
 ENV ASPNETCORE_ENVIRONMENT=Development
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
+
 COPY ["src/Movie.Api/Movie.Api.csproj", "src/Movie.Api/"]
 COPY ["src/Movie.Infrastructure/Movie.Infrastructure.csproj", "src/Movie.Infrastructure/"]
 RUN dotnet restore "src/Movie.Api/Movie.Api.csproj"
 COPY . .
-WORKDIR "/src/src/Movie.Api"
+WORKDIR "src/Movie.Api"
 RUN dotnet build "Movie.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
