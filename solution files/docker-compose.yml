@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+  acmecorp.webapi:
+    image: ${DOCKER_REGISTRY-}movie.api
+    build:
+      context: .
+      dockerfile: ./Movie.Api/Dockerfile
+    ports:
+      - "53961:80"
+  acmecorp.web:
+    image: ${DOCKER_REGISTRY-}movie.web
+    build:
+      context: .
+      dockerfile: ./Movie.Api/ClientApp/Dockerfile
+    ports:
+      - "54011:80"
