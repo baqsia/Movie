@@ -3,13 +3,14 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+ENV ASPNETCORE_ENVIRONMENT=Development
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Movie.Api/Movie.Api.csproj", "Movie.Api/"]
-COPY ["Movie.Infrastructure/Movie.Infrastructure.csproj", "Movie.Infrastructure/"]
-RUN dotnet restore "Movie.Api/Movie.Api.csproj"
+COPY ["src/Movie.Api/Movie.Api.csproj", "src/Movie.Api/"]
+COPY ["src/Movie.Infrastructure/Movie.Infrastructure.csproj", "src/Movie.Infrastructure/"]
+RUN dotnet restore "src/Movie.Api/Movie.Api.csproj"
 COPY . .
-WORKDIR "/src/Movie.Api"
+WORKDIR "/src/src/Movie.Api"
 RUN dotnet build "Movie.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
