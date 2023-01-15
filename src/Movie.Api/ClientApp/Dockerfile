@@ -1,11 +1,13 @@
-﻿# ==== CONFIGURE =====
-# Use a Node 16 base image
-FROM node:12
-WORKDIR . 
-COPY . .
+﻿FROM node:alpine
+ 
+WORKDIR /usr/app
+COPY ./src/Movie.Api/ClientApp /usr/app
 
-RUN npm i
-
+RUN npm install 
+#
+RUN npm run build
+ 
+# 
 EXPOSE 5173
-
-RUN npm run dev
+# Start the app
+CMD [ "npm", "run", "preview" ]

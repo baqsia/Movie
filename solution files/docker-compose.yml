@@ -2,12 +2,16 @@ version: '3.4'
 services:
   mssql:
     image: "mcr.microsoft.com/mssql/server"
+    networks:
+      - movieappnetwork
     environment:
-      SA_PASSWORD: "sa"
-      ACCEPT_EULA: "Pass@word"
+      SA_PASSWORD: "4@)/$M-yR.SHgJ)"
+      ACCEPT_EULA: "Y"
       
   movie.webapi:
     image: movie.api
+    networks:
+      - movieappnetwork
     build:
       context: ..
       dockerfile: src/Movie.Api/Dockerfile
@@ -15,6 +19,12 @@ services:
     
   movie.web:
     image: movie.web
+    networks:
+      - movieappnetwork
     build:
       context: ..
       dockerfile: src/Movie.Api/ClientApp/Dockerfile
+      
+networks:
+  movieappnetwork:
+    external: false
