@@ -6,6 +6,6 @@ COPY . .
 
 RUN npm i
 
-EXPOSE 5137
+EXPOSE 5173
 
 RUN npm run dev
