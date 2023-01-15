@@ -6,7 +6,10 @@
     <projectFile profileName="WebApplication1">WebApplication1/WebApplication1.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b611a277-cbf8-407a-918a-a704949cfe00" name="Changes" comment="initial commit" />
+    <list default="true" id="b611a277-cbf8-407a-918a-a704949cfe00" name="Changes" comment="initial comit">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Movie/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Movie/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Movie.sln" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +53,24 @@
   }
 }</component>
   <component name="RunManager" selected="Docker.Movie.Api/Dockerfile">
+    <configuration name="Movie.Api" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/src/Movie.Api/Movie.Api.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="Movie.Api" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Movie.Api/Movie.Api.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
@@ -150,6 +171,7 @@
       <workItem from="1673595912256" duration="2261000" />
       <workItem from="1673635601509" duration="10194000" />
       <workItem from="1673716518765" duration="13431000" />
+      <workItem from="1673773088395" duration="676000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1673772399280</created>
@@ -165,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673772820587</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="initial comit">
+      <created>1673773137502</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673773137502</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +231,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="initial comit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial comit" />
   </component>
 </project>
