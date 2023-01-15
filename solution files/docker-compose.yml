@@ -3,8 +3,8 @@ services:
   mssql:
     image: "mcr.microsoft.com/mssql/server"
     environment:
-      SA_PASSWORD: "mygpi_user"
-      ACCEPT_EULA: "mygpi_pa$$"
+      SA_PASSWORD: "sa"
+      ACCEPT_EULA: "Pass@word"
       
   movie.webapi:
     image: movie.api
