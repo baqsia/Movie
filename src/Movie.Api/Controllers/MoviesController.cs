@@ -20,7 +20,7 @@ public class MoviesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] string? query, [FromQuery] int? page,
+    public async Task<IActionResult> GetAllAsync([FromQuery] string? query, [FromQuery] int? page,
         [FromQuery] int? itemCount)
     {
         var result = await _mediator.Send(new GetMovieListQuery(query)
@@ -33,7 +33,7 @@ public class MoviesController : ControllerBase
     
     
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetAll([FromRoute, Required] string id)
+    public async Task<IActionResult> GetMovieByIdAsync([FromRoute, Required] string id)
     {
         var result = await _mediator.Send(new GetMovieDetailsQuery
         {
