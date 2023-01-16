@@ -34,11 +34,12 @@ services:
     build:
       context: ..
       dockerfile: src/Movie.Api/ClientApp/Dockerfile
-      args:
-        - REACT_APP_ENV=development
     volumes:
       - "/app"
-      
+    environment:
+        PROXY_API: https://movie.webapi
+    depends_on: [movie.webapi]
+
 networks:
   movieappnetwork:
     external: false

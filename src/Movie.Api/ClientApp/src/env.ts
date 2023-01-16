@@ -1,14 +1,10 @@
-const devenv = {
+let env = {
     baseUrl: 'https://localhost:7212'
 };
-
-const dockerenv = {
-    baseUrl: 'movie.api'
-};
-
-let env = devenv;
-if (process.env.REACT_APP_ENV === 'development') {
-    env = dockerenv;
+if (process && process.env) {
+    env = {
+        baseUrl: process.env.PROXY_API || 'https://localhost:7212'
+    };
 }
 
 export const environment = env;

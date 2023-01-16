@@ -10,8 +10,6 @@ COPY ./src/Movie.Api/ClientApp /app
 
 RUN npm install
 
-ENV REACT_APP_ENV $REACT_APP_ENV
-
 EXPOSE 5173
  
 CMD ["npm", "run", "dev"]
