@@ -1,22 +1,17 @@
-﻿#FROM node:alpine
-## Create app directory
-#WORKDIR /app
-#
-#COPY ./src/Movie.Api/ClientApp/package*.json /app
-#RUN npm install
-#
-#COPY  ./src/Movie.Api/ClientApp /app
-#
-#EXPOSE 3000
-#CMD ["npm", "run", "dev"]
+﻿FROM node:alpine
 
-FROM node:alpine
- 
-EXPOSE 5173
- 
-COPY ./src/Movie.Api/ClientApp/package*.json package.json 
+RUN mkdir /app
+WORKDIR /app
+
+COPY ./src/Movie.Api/ClientApp/package-lock.json /app
+COPY ./src/Movie.Api/ClientApp/package.json /app
+
+COPY ./src/Movie.Api/ClientApp /app
+
 RUN npm install
- 
-COPY . .
+
+ENV REACT_APP_ENV $REACT_APP_ENV
+
+EXPOSE 5173
  
 CMD ["npm", "run", "dev"]

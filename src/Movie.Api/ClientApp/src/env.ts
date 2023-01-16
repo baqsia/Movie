@@ -7,7 +7,7 @@ const dockerenv = {
 };
 
 let env = devenv;
-if (process.env.ENV === 'development') {
+if (process.env.REACT_APP_ENV === 'development') {
     env = dockerenv;
 }
 

@@ -29,14 +29,15 @@ services:
     image: movie.web
     networks:
       - movieappnetwork
-    environment:
-      - env=development
+    ports:
+      - "5173:5173"
     build:
       context: ..
       dockerfile: src/Movie.Api/ClientApp/Dockerfile
+      args:
+        - REACT_APP_ENV=development
     volumes:
       - "/app"
-      - "/app/node_modules"
       
 networks:
   movieappnetwork:

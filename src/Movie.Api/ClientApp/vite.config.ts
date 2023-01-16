@@ -9,8 +9,5 @@ export default defineConfig({
         /^node:.*/,
       ]
     }
-  },
-  define: {
-    'process.env': {}
   }
 })
