@@ -9,7 +9,7 @@ using Movie.Infrastructure.Repository;
 var builder = WebApplication.CreateBuilder(args);
 
 const string cors = "movies_api_cors_policy";
- 
+
 var allowedHosts = builder.Configuration.GetValue<string>("FrontendUrl");
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -27,7 +27,11 @@ builder.Services.AddCors(setup =>
 });
 builder.Services.AddDbContextPool<MovieDbContext>(cfg =>
 {
-    cfg.UseSqlServer(builder.Configuration.GetConnectionString("MovieDatabase")!);
+    cfg.UseSqlServer(builder.Configuration.GetConnectionString("MovieDatabase")!,
+        optionsBuilder =>
+        {
+            optionsBuilder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+        });
 });
 builder.Services.AddScoped<IGuidTransformService, GuidTransformService>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
@@ -48,17 +52,4 @@ app.MapControllers();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-await ApplyMigrationAsync(app);
-
 app.Run();
-
-async Task ApplyMigrationAsync(IHost host)
-{
-    await using var scope = host.Services.CreateAsyncScope();
-    var db = scope.ServiceProvider.GetRequiredService<MovieDbContext>();
-    var pendingMigrations = await db.Database.GetPendingMigrationsAsync();
-    if (pendingMigrations.Any())
-    {
-        await db.Database.MigrateAsync().ConfigureAwait(false);
-    }
-}
