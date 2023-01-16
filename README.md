@@ -1,7 +1,7 @@
 # Movie
 
 try run 
-##### docker-compose command
+##### docker-compose up
 
 if any problems with that 
 
