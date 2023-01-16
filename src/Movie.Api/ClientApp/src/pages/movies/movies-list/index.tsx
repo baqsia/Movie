@@ -19,11 +19,6 @@ export const MoviesList = () => {
     useEffect(() => {
         fetchMovies(query, page, itemCount).then((pagedResponse) => {
             setMovies(pagedResponse.data);
-            console.log({
-                totalCount: pagedResponse.totalCount,
-                itemCount
-            })
-
             setPageCount(Math.ceil(pagedResponse.totalCount / itemCount));
         });
     }, [page, query]);
