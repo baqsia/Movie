@@ -1,4 +1,5 @@
 version: '3.4'
+ 
 services:
   mssql:
     image: 'mcr.microsoft.com/mssql/server'
@@ -14,10 +15,12 @@ services:
       
   movie.webapi:
     image: movie.api
+    env_file:
+      - ".env"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-        - "7212:80"
+      - "${DOCKER_SERVER_PORT_FORWARD}:${SERVER_PORT}"
     build:
       context: ..
       dockerfile: src/Movie.Api/Dockerfile
@@ -27,17 +30,19 @@ services:
     
   movie.web:
     image: movie.web
+    env_file:
+      - ".env"
     networks:
       - movieappnetwork
     ports:
-      - "5173:5173"
+      - "${DOCKER_CLIENT_PORT_FORWARD}:${CLIENT_PORT}"
     build:
       context: ..
       dockerfile: src/Movie.Api/ClientApp/Dockerfile
     volumes:
       - "/app"
     environment:
-        PROXY_API: https://movie.webapi
+        PROXY_API: "http://${CLIENT_IP}:${DOCKER_SERVER_PORT_FORWARD}"
     depends_on: [movie.webapi]
 
 networks:
