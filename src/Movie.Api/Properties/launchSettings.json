@@ -16,7 +16,7 @@
       "launchUrl": "swagger/index.html",
       "applicationUrl": "https://localhost:7212;http://localhost:5093",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Localhost"
       }
     },
     "IIS Express": {
@@ -24,7 +24,7 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Localhost"
       }
     },
     "Docker": {

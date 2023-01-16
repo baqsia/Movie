@@ -29,12 +29,14 @@ services:
     image: movie.web
     networks:
       - movieappnetwork
-    ports:
-      - "5173:80"
-      - "4173:80"
+    environment:
+      - env=development
     build:
       context: ..
       dockerfile: src/Movie.Api/ClientApp/Dockerfile
+    volumes:
+      - "/app"
+      - "/app/node_modules"
       
 networks:
   movieappnetwork:

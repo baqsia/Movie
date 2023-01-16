@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 const string cors = "movies_api_cors_policy";
 
-var allowedHosts = builder.Configuration.GetValue<string>("FrontendUrl");
+var allowedHosts = builder.Configuration.GetSection("FrontendUrls").Get<string[]>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
