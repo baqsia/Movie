@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Movie.Api.Controllers;
+using Movie.Api.Infrastructure;
 using Movie.Api.Service;
 using Movie.Infrastructure.Context;
 using Movie.Infrastructure.Repository;
@@ -38,6 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseRouting();
@@ -46,4 +48,17 @@ app.MapControllers();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+await ApplyMigrationAsync(app);
+
 app.Run();
+
+async Task ApplyMigrationAsync(IHost host)
+{
+    await using var scope = host.Services.CreateAsyncScope();
+    var db = scope.ServiceProvider.GetRequiredService<MovieDbContext>();
+    var pendingMigrations = await db.Database.GetPendingMigrationsAsync();
+    if (pendingMigrations.Any())
+    {
+        await db.Database.MigrateAsync().ConfigureAwait(false);
+    }
+}

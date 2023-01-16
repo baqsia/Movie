@@ -1,11 +1,13 @@
 {
   "name": "movie",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "description": "movie test app",
+  "license": "no license",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.9.1",

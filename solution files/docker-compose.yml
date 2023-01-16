@@ -1,26 +1,37 @@
 version: '3.4'
 services:
   mssql:
-    image: "mcr.microsoft.com/mssql/server"
+    image: 'mcr.microsoft.com/mssql/server'
+    ports:
+      - '1433:1433'
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Passw0rd_02
+    volumes:
+      - './drive:/var/opt/mssql'
     networks:
       - movieappnetwork
-    environment:
-      SA_PASSWORD: "4@)/$M-yR.SHgJ)"
-      ACCEPT_EULA: "Y"
       
   movie.webapi:
     image: movie.api
-    networks:
-      - movieappnetwork
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+        - "7212:80"
     build:
       context: ..
       dockerfile: src/Movie.Api/Dockerfile
+    networks:
+      - movieappnetwork
     depends_on: [ mssql ]
     
   movie.web:
     image: movie.web
     networks:
       - movieappnetwork
+    ports:
+      - "5173:80"
+      - "4173:80"
     build:
       context: ..
       dockerfile: src/Movie.Api/ClientApp/Dockerfile

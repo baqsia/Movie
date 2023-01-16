@@ -6,8 +6,7 @@ COPY ./src/Movie.Api/ClientApp /usr/app
 RUN npm install 
 #
 RUN npm run build
- 
 # 
-EXPOSE 5173
+EXPOSE 80
 # Start the app
 CMD [ "npm", "run", "preview" ]
