@@ -14,12 +14,19 @@ export const MoviesList = () => {
     const [page, setPage] = useState(1);
     const [itemCount] = useState(30);
     const [movies, setMovies] = useState(Array<MoviesListItem>);
+    const [pageCount, setPageCount] = useState(0);
 
     useEffect(() => {
-        fetchMovies(query, page, itemCount).then((pagedResponse) =>
-            setMovies(pagedResponse.data));
+        fetchMovies(query, page, itemCount).then((pagedResponse) => {
+            setMovies(pagedResponse.data);
+            console.log({
+                totalCount: pagedResponse.totalCount,
+                itemCount
+            })
+
+            setPageCount(Math.ceil(pagedResponse.totalCount / itemCount));
+        });
     }, [page, query]);
-    const pageCount = Math.ceil(movies?.length || 0 / itemCount)
 
     const handlePageClick = (event: { selected: number }) => {
         setPage(event.selected + 1)

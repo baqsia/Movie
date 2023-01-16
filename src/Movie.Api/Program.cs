@@ -52,4 +52,6 @@ app.MapControllers();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+await MigrationRunner.Run(app.Services);
+
 app.Run();

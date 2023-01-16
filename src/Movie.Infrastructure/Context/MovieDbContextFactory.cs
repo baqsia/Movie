@@ -11,7 +11,7 @@ public class MovieDbContextFactory : IDesignTimeDbContextFactory<MovieDbContext>
     { 
         var config = new ConfigurationBuilder()
             .SetBasePath(Path.Combine(Directory.GetCurrentDirectory()))
-            .AddJsonFile($"appsettings.Development.json", optional: false, reloadOnChange: true)
+            .AddJsonFile($"appsettings.Localhost.json", optional: false, reloadOnChange: true)
             .Build();
 
         var optionsBuilder = new DbContextOptionsBuilder<MovieDbContext>();
