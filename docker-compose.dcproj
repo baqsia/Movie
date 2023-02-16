@@ -9,10 +9,10 @@
         <DockerServiceName>college.webapi</DockerServiceName>
     </PropertyGroup>
     <ItemGroup>
-        <None Include="./solution folder/docker-compose.override.yml">
+        <None Include="./solution files/docker-compose.override.yml">
             <DependentUpon>docker-compose.yml</DependentUpon>
         </None>
-        <None Include="./solution folder/docker-compose.yml" />
+        <None Include="./solution files/docker-compose.yml" />
         <None Include=".dockerignore" />
     </ItemGroup>
 </Project>
